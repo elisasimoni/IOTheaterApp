@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">IOTheatre</string>
+    <string name="welcome">WELCOME</string>
+    <string name="dashboard">dashboard</string>
+    <string name="routine">routine</string>
+    <string name="dashboardTitle">DASHBOARD</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="music_timer_seconds">Music Timer (seconds)</string>
+    <string name="awning_close_time_minutes">Awning Close Time (minutes)</string>
+    <string name="awning_open_time_minutes">Awning Open Time (minutes)</string>
+    <string name="floodlight_timer_seconds">Floodlight Timer (seconds)</string>
+    <string name="light_timer_seconds">Light Timer (seconds)</string>
+    <string name="blue_led">Blue LED</string>
+    <string name="green_led">Green LED</string>
+    <string name="red_led">Red LED</string>
+    <string name="routineTitle">ROUTINE</string>
+</resources>

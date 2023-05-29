@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="buttonRed" type="id" />
+    <item name="buttonGreen" type="id" />
+    <item name="buttonBlue" type="id" />
+    <item name="brightnessSeekBar" type="id" />
+    <item name="lightTimerEditText" type="id" />
+    <item name="floodlightTimerEditText" type="id" />
+    <item name="awningOpenEditText" type="id" />
+    <item name="awningCloseEditText" type="id" />
+    <item name="musicSpinner" type="id" />
+    <item name="musicVolumeSeekBar" type="id" />
+    <item name="musicTimerEditText" type="id" />
+    <item name="confirmButton" type="id" />
+</resources>
