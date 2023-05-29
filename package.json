@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@awesome-cordova-plugins/bluetooth-serial": "^6.3.0",
+    "cordova-plugin-bluetooth-serial": "^0.4.7"
+  }
+}

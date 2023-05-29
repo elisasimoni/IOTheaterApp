@@ -20,8 +20,8 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         // Esempio di accesso all'oggetto BluetoothSocket dal singleton
-        val bluetoothSocket = BluetoothSocketSingleton.bluetoothSocket
-        val bluetoothAdapter = BluetoothAdapterSingleton.bluetoothAdapter
+        //val bluetoothSocket = BluetoothSocketSingleton.bluetoothSocket
+        //val bluetoothAdapter = BluetoothAdapterSingleton.bluetoothAdapter
 
         redImageView = findViewById(R.id.red)
         greenImageView = findViewById(R.id.green)
@@ -30,7 +30,7 @@ class DashboardActivity : AppCompatActivity() {
         curtainImageView = findViewById(R.id.imageView4)
         musicImageView = findViewById(R.id.imageView5)
 
-        if (bluetoothSocket != null && bluetoothSocket.isConnected) {
+        /*if (bluetoothSocket != null && bluetoothSocket.isConnected) {
                 try {
                     // Invia il comando per controllare lo stato del LED 1 all'Arduino
                     bluetoothSocket.outputStream.write("CHECK_LED_1".toByteArray())
@@ -50,7 +50,7 @@ class DashboardActivity : AppCompatActivity() {
                 Toast.makeText(this, "Bluetooth non è connesso", Toast.LENGTH_SHORT).show()
             }
 
-
+*/
 
         greenImageView.setOnClickListener {
             // Azione eseguita quando l'utente fa clic sull'immagine verde
