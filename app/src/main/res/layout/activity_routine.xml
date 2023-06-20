@@ -1,180 +1,341 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1b1b1b"
-    tools:context=".RoutineActivity">
+    android:background="#1b1b1b">
 
-    <TextView
-        android:id="@+id/welcomeId"
-        android:layout_width="254dp"
-        android:layout_height="83dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/tulpen_one"
-        android:text="@string/routineTitle"
-        android:textColor="#FFFFFF"
-        android:textSize="96sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonBlue"
-        android:layout_width="0dp"
-        android:layout_height="81dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#0000FF"
-        android:text="@string/blue_led"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonGreen"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeId" />
-
-    <Button
-        android:id="@+id/buttonRed"
-        android:layout_width="0dp"
-        android:layout_height="81dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="#FF0000"
-        android:text="@string/red_led"
-        app:layout_constraintEnd_toStartOf="@+id/buttonGreen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeId" />
-
-    <Button
-        android:id="@+id/buttonGreen"
-        android:layout_width="0dp"
-        android:layout_height="81dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="#00FF00"
-        android:text="@string/green_led"
-        app:layout_constraintEnd_toStartOf="@+id/buttonBlue"
-        app:layout_constraintStart_toEndOf="@+id/buttonRed"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeId" />
-
-    <SeekBar
-        android:id="@+id/brightnessSeekBar"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonBlue" />
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/lightTimerEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@android:drawable/editbox_background"
-        android:hint="@string/light_timer_seconds"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brightnessSeekBar" />
+        <TextView
+            android:id="@+id/welcomeId"
+            android:layout_width="254dp"
+            android:layout_height="83dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/tulpen_one"
+            android:text="@string/routineTitle"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="96sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/floodlightTimerEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@android:drawable/editbox_background"
-        android:hint="@string/floodlight_timer_seconds"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lightTimerEditText" />
+        <TextView
+            android:id="@+id/durationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Set duration of routine (minutes)"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcomeId" />
 
-    <EditText
-        android:id="@+id/awningOpenEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@android:drawable/editbox_background"
-        android:hint="@string/awning_open_time_minutes"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/floodlightTimerEditText"
-        android:importantForAutofill="no"
-         />
+        <EditText
+            android:id="@+id/durationEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:hint="Duration (minutes)"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/durationTextView" />
 
-    <EditText
-        android:id="@+id/awningCloseEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@android:drawable/editbox_background"
-        android:hint="@string/awning_close_time_minutes"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/awningOpenEditText" />
+        <TextView
+            android:id="@+id/lightSelectionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Choose what light will be On"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/durationEditText" />
 
-    <Spinner
-        android:id="@+id/musicSpinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/musicVolumeSeekBar"
-        app:layout_constraintTop_toBottomOf="@+id/awningCloseEditText" />
+        <Button
+            android:id="@+id/buttonRed"
+            android:layout_width="99dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#29FF0000"
+            android:text="@string/red_led"
+            app:layout_constraintEnd_toStartOf="@+id/buttonGreen"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lightSelectionTextView" />
 
-    <SeekBar
-        android:id="@+id/musicVolumeSeekBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintStart_toEndOf="@+id/musicSpinner"
-        app:layout_constraintEnd_toStartOf="@+id/musicTimerEditText"
-        app:layout_constraintTop_toBottomOf="@+id/awningCloseEditText" />
+        <Button
+            android:id="@+id/buttonBlue"
+            android:layout_width="99dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="#2A0000FF"
+            android:text="@string/blue_led"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonGreen"
+            app:layout_constraintTop_toBottomOf="@+id/lightSelectionTextView" />
 
-    <EditText
-        android:id="@+id/musicTimerEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@android:drawable/editbox_background"
-        android:hint="@string/music_timer_seconds"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/musicVolumeSeekBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/awningCloseEditText" />
+        <Button
+            android:id="@+id/buttonGreen"
+            android:layout_width="99dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#2A00FF00"
+            android:text="@string/green_led"
+            app:layout_constraintEnd_toStartOf="@+id/buttonBlue"
+            app:layout_constraintStart_toEndOf="@+id/buttonRed"
+            app:layout_constraintTop_toBottomOf="@+id/lightSelectionTextView" />
 
-    <Button
-        android:id="@+id/confirmButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/confirm"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musicTimerEditText" />
+        <TextView
+            android:id="@+id/lightTimerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Light timer (seconds)"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRed" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/lightIntensitySeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="9dp"
+            android:text="Light intesity"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/lightIntensitySeekBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lightOffEditText" />
+
+        <EditText
+            android:id="@+id/lightOnEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:hint="Turn On (seconds)"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lightTimerTextView" />
+
+        <EditText
+            android:id="@+id/lightOffEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:hint="Turn Off (seconds)"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lightOnEditText" />
+
+        <SeekBar
+            android:id="@+id/lightIntensitySeekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="16dp"
+            android:progressBackgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lightOffEditText" />
+
+        <TextView
+            android:id="@+id/curtainsTimerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Curtains Timer (seconds)"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lightIntensitySeekBar" />
+
+        <TextView
+            android:id="@+id/songSelectionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Select Song"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/curtainsCloseEditText" />
+
+        <TextView
+            android:id="@+id/songSelectionVolume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Volume"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/songVolumeSeekBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toEndOf="@+id/songSelectionTextView" />
+
+        <TextView
+            android:id="@+id/songSelectionDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Song Timer (seconds)"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/songSpinner" />
+
+        <Spinner
+            android:id="@+id/songSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:textColor="#FFFFFF"
+            android:entries="@array/songs"
+            app:layout_constraintEnd_toStartOf="@+id/songVolumeSeekBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/songSelectionTextView" />
+
+        <SeekBar
+            android:id="@+id/songVolumeSeekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            android:progressBackgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/songSpinner"
+            app:layout_constraintTop_toBottomOf="@+id/songSelectionTextView" />
+
+        <EditText
+            android:id="@+id/songTimerEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:hint="Play Start (seconds)"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/songSpinner" />
+
+        <EditText
+            android:id="@+id/songTimerEditText2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:hint="Play Stop(seconds)"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/songSpinner" />
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:backgroundTint="#FF9800"
+            android:text="Start Routine"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/songVolumeSeekBar" />
+
+        <EditText
+            android:id="@+id/curtainsOpenEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:hint="Open (seconds)"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/curtainsTimerTextView" />
+
+        <EditText
+            android:id="@+id/curtainsCloseEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:hint="Close (seconds)"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/curtainsOpenEditText" />
+
+        <Button
+            android:id="@+id/buttonConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:onClick="scanBT"
+            android:text="CONNECT"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/startButton"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+

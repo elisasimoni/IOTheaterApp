@@ -14,4 +14,9 @@
     <string name="green_led">Green LED</string>
     <string name="red_led">Red LED</string>
     <string name="routineTitle">ROUTINE</string>
+    <string-array name="songs">
+        <item>Tetris</item>
+        <item>Game of Thrones</item>
+        <item>Pacman</item>
+    </string-array>
 </resources>
