@@ -65,20 +65,22 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
         val startButton = findViewById<Button>(R.id.startButton)
-        startButton.setOnClickListener { // Salva le condizioni degli elementi in un oggetto JSON
+        startButton.setOnClickListener {
+            // Salva le condizioni degli elementi in un oggetto JSON
             val json = createJsonFromLayout()
 
             if (json != null) {
-                Toast.makeText(this,"Routine send Wait 3 second to start",Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Routine send Wait 3 second to start", Toast.LENGTH_LONG).show()
                 saveJsonToFile(json)
 
+                // Invia il JSON ad Arduino
+                var jsonString = json.toString()
+                jsonString += "\n"
+                sendJsonToArduino(jsonString)
             }
-
         }
-
-
-
 
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_DENIED) {
@@ -87,10 +89,6 @@ class MainActivity : AppCompatActivity() {
                 return
             }
         }
-
-
-
-
 
     }
     fun btScan(device:String){
@@ -125,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         var outputStream = bluetoothSocket?.outputStream
 
 
-        if (outputStream == null) {
+       /* if (outputStream == null) {
             Log.d(TAG, "Output stream error")
             return
         }
@@ -137,7 +135,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("Command- >", command)
         } catch (e: IOException) {
             throw RuntimeException(e)
-        }
+        }*/
 
 
 
@@ -183,29 +181,36 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-   /* private fun sendJsonToArduino(json: JSONObject) {
-        val jsonString = json.toString()
+    @SuppressLint("MissingPermission")
+    private fun sendJsonToArduino(jsonString: String) {
+        val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
+        val bluetoothAdapter: BluetoothAdapter = bluetoothManager.adapter
+        val HC06BluetoothModule: BluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress)
+        val deviceUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB") // UUID universale
+        var bluetoothSocket: BluetoothSocket? = null
+        bluetoothSocket = HC06BluetoothModule.createRfcommSocketToServiceRecord(deviceUUID)
+        bluetoothSocket?.connect()
+        btScan(HC06BluetoothModule.name)
+        val outputStream = bluetoothSocket?.outputStream
 
-        var outputStream: OutputStream? = null
+        if (outputStream == null) {
+            Log.d(TAG, "Output stream error")
+            return
+        }
+
         try {
-            outputStream = bluetoothSocket?.outputStream
-            if (outputStream == null) {
-                Log.d(TAG, "Output stream error")
-                return
-            }
-
-            val command = jsonString
-
-            outputStream.write(command.toByteArray())
-            Log.d("Command- >", command)
+            // Invia il JSON come sequenza di byte all'Arduino
+            outputStream.write(jsonString.toByteArray())
+            Log.d("JSON Sent ->", jsonString)
         } catch (e: IOException) {
             throw RuntimeException(e)
-        } finally {
-            outputStream?.close()
         }
+
+        // Chiudi la connessione Bluetooth
+        bluetoothSocket?.close()
     }
 
-    */
+
 
     private fun createJsonFromLayout(): JSONObject? {
         val json = JSONObject()
@@ -214,40 +219,44 @@ class MainActivity : AppCompatActivity() {
             val durationEditText = findViewById<EditText>(R.id.durationEditText)
             json.put("routineDuration", durationEditText.text.toString())
             val lightOnEditText = findViewById<EditText>(R.id.lightOnEditText)
-            json.put("lightOn", lightOnEditText.text.toString())
+            json.put("stageLightStartTime", lightOnEditText.text.toString())
             val lightOffEditText = findViewById<EditText>(R.id.lightOffEditText)
-            json.put("lightOff", lightOffEditText.text.toString())
-            val curtainsOpenEditText = findViewById<EditText>(R.id.curtainsOpenEditText)
-            json.put("curtainsOpen", curtainsOpenEditText.text.toString())
-            val curtainsCloseEditText = findViewById<EditText>(R.id.curtainsCloseEditText)
-            json.put("curtainsClose", curtainsCloseEditText.text.toString())
+            json.put("stageLightEndTime", lightOffEditText.text.toString())
             val songTimerEditText = findViewById<EditText>(R.id.songTimerEditText)
-            json.put("songPlayStart", songTimerEditText.text.toString())
+            json.put("musicStartTime", songTimerEditText.text.toString())
             val songTimerEditText2 = findViewById<EditText>(R.id.songTimerEditText2)
-            json.put("songPlayStop", songTimerEditText2.text.toString())
+            json.put("musicEndTime", songTimerEditText2.text.toString())
             val songVolume = findViewById<SeekBar>(R.id.songVolumeSeekBar)
-            json.put("songVolume", songVolume.progress)
-
-
-
-            // Aggiungi i valori degli Spinner all'oggetto JSON
+            json.put("musicVolume", songVolume.progress)
             val songSpinner = findViewById<Spinner>(R.id.songSpinner)
-            json.put("selectedSong", songSpinner.selectedItem.toString())
+            json.put("musicSong", songSpinner.selectedItem.toString())
 
-            // Aggiungi il valore del SeekBar all'oggetto JSON
             val lightIntensitySeekBar = findViewById<SeekBar>(R.id.lightIntensitySeekBar)
-            json.put("lightIntensity", lightIntensitySeekBar.progress)
+            json.put("stageLightBrightness", lightIntensitySeekBar.progress)
 
             // Esempio per i pulsanti (led) usando il loro stato selezionato come valore booleano
             val buttonRed = findViewById<Button>(R.id.buttonRed)
-            val isRedLedSelected = buttonRed.isSelected
-            json.put("isRedLedSelected", isRedLedSelected)
+            var isRedLedSelected = buttonRed.isSelected
             val buttonGreen = findViewById<Button>(R.id.buttonGreen)
-            val isGreenLedSelected = buttonGreen.isSelected
-            json.put("isGreenLedSelected", isGreenLedSelected)
+            var isGreenLedSelected = buttonGreen.isSelected
             val buttonBlue = findViewById<Button>(R.id.buttonBlue)
-            val isBlueLedSelected = buttonBlue.isSelected
-            json.put("isBlueLedSelected", isBlueLedSelected)
+            var isBlueLedSelected = buttonBlue.isSelected
+            var b=""
+            var g=""
+            var r=""
+            if(isBlueLedSelected){
+                b = "175"
+            }else if(isRedLedSelected){
+                r = "175"
+            }else if(isGreenLedSelected){
+                g = "175"
+            }
+
+            json.put("stageLightColorR",r )
+            json.put("stageLightColorG",g)
+            json.put("stageLightColorB",b)
+            json.put("stageLightColorB",b)
+
         } catch (e: JSONException) {
             e.printStackTrace()
         }

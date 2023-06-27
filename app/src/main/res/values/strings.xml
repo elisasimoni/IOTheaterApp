@@ -15,8 +15,8 @@
     <string name="red_led">Red LED</string>
     <string name="routineTitle">ROUTINE</string>
     <string-array name="songs">
-        <item>Tetris</item>
-        <item>Game of Thrones</item>
-        <item>Pacman</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 </resources>

@@ -175,27 +175,16 @@
             app:layout_constraintTop_toBottomOf="@+id/lightOffEditText" />
 
         <TextView
-            android:id="@+id/curtainsTimerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Curtains Timer (seconds)"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lightIntensitySeekBar" />
-
-        <TextView
             android:id="@+id/songSelectionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="Select Song"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/curtainsCloseEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/lightIntensitySeekBar" />
 
         <TextView
             android:id="@+id/songSelectionVolume"
@@ -289,36 +278,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/songVolumeSeekBar" />
-
-        <EditText
-            android:id="@+id/curtainsOpenEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:background="@android:drawable/editbox_background"
-            android:hint="Open (seconds)"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/curtainsTimerTextView" />
-
-        <EditText
-            android:id="@+id/curtainsCloseEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="@android:drawable/editbox_background"
-            android:hint="Close (seconds)"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/curtainsOpenEditText" />
 
         <Button
             android:id="@+id/buttonConnect"
