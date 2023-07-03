@@ -10,9 +10,9 @@
     <string name="awning_open_time_minutes">Awning Open Time (minutes)</string>
     <string name="floodlight_timer_seconds">Floodlight Timer (seconds)</string>
     <string name="light_timer_seconds">Light Timer (seconds)</string>
-    <string name="blue_led">Blue LED</string>
-    <string name="green_led">Green LED</string>
-    <string name="red_led">Red LED</string>
+    <string name="blue_led">Blue</string>
+    <string name="green_led">Green</string>
+    <string name="red_led">Red</string>
     <string name="routineTitle">ROUTINE</string>
     <string-array name="songs">
         <item>1</item>

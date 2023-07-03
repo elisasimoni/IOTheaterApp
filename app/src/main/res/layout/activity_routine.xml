@@ -73,11 +73,13 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:backgroundTint="#29FF0000"
+            android:backgroundTint="#6C4545"
             android:text="@string/red_led"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/buttonGreen"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lightSelectionTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/lightSelectionTextView"
+            style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
         <Button
             android:id="@+id/buttonBlue"
@@ -86,11 +88,13 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
-            android:backgroundTint="#2A0000FF"
+            android:backgroundTint="#3D3D59"
             android:text="@string/blue_led"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/buttonGreen"
-            app:layout_constraintTop_toBottomOf="@+id/lightSelectionTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/lightSelectionTextView"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/buttonGreen"
@@ -99,8 +103,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:backgroundTint="#2A00FF00"
+            android:backgroundTint="#2A467046"
             android:text="@string/green_led"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/buttonBlue"
             app:layout_constraintStart_toEndOf="@+id/buttonRed"
             app:layout_constraintTop_toBottomOf="@+id/lightSelectionTextView" />
@@ -280,6 +286,19 @@
             app:layout_constraintTop_toBottomOf="@+id/songVolumeSeekBar" />
 
         <Button
+            android:id="@+id/anotherButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#FF9800"
+            android:text="Ready"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.546"
+            app:layout_constraintStart_toEndOf="@+id/buttonConnect"
+            app:layout_constraintTop_toBottomOf="@+id/startButton" />
+
+        <Button
             android:id="@+id/buttonConnect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -289,9 +308,10 @@
             android:text="CONNECT"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.189"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/startButton"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
